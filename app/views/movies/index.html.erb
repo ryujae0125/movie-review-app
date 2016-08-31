@@ -1,0 +1,16 @@
+<h1> Welcome </h1>
+<section>
+  <div class="row">
+
+    <% @movies.each do |movie| %>
+      <div class="col-sm-4">
+        <div class="movie_single">
+          <h2 class="movie_header"><%= movie.name %></h2>
+          <p>Genre: <%= movie.genre %></p>
+          <p>Date: <%= movie.date %></p>
+          <p>Director: <%= movie.director %></p>
+          <p>Favorite: <%= movie.favorite %></p>
+          <br>
+        </div>
+      </div>
+    <% end %>
