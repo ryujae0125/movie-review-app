@@ -12,4 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= css/bootstrap.min
+ *= css/ionicons.min.css
+ *= css/animate.css
+ *= css/slider.css
+ *= css/owl.carousel.css
+ *= css/owl.theme.css
+ *= css/jquery.fancybox.css
+ *= require css/main
  */

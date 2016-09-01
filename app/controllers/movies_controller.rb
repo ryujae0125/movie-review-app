@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @movies = Movie.all
   end
@@ -16,7 +17,7 @@ class MoviesController < ApplicationController
       name: params[:name],
       genre: params[:genre],
       date: params[:date],
-      director: params[:director]
+      director: params[:director],
       favorite: false
       )
   end
