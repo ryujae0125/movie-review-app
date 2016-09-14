@@ -1,7 +1,19 @@
-<h1><%= @movie.name %> </h1>
-<ul>
-  <li><%= @movie.genre %> </li>
-  <li><%= @movie.date %></li>
-  <li><%= @movie.director %></li>
-  <li><%= @movie.favorite %></li>
-</ul>
+
+
+<section>
+  <div class="row" style="margin-top: 10%;">
+    <div class="col-sm-3 col-sm-offset-2">
+      <div class="movie_single">
+          <h3><%= @movie.name %></h3>
+          <p>Genre: <%= @movie.genre %></p>
+
+          <p>Date Created: <%= @movie.date %></p>
+          <p>Director: <%= @movie.director %></p>
+
+          <%= link_to "Edit", "/movies/#{@movie.id}/edit", class: "btn btn-success" %>
+          <%= link_to "Delete", "/movies/#{@movie.id}", {method: :delete, class: "btn btn-danger" }%>
+
+      </div>
+    </div>
+  </div>
+</section>

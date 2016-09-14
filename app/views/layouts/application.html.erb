@@ -5,10 +5,111 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
+  <header id="top-bar" class="navbar-fixed-top animated-header">
+      <div class="container">
+          <div class="navbar-header">
+              <!-- responsive nav button -->
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+              <!-- /responsive nav button -->
 
-<%= yield %>
+              <!-- logo -->
+              <div class="navbar-brand">
+                  <a href="/" >
+                      <%= image_tag 'logo.png' %>
+                  </a>
+              </div>
+              <!-- /logo -->
+          </div>
+
+  <nav class="collapse navbar-collapse navbar-right" role="navigation">
+      <div class="main-menu">
+          <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a href="/" >Home</a>
+              </li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="service.html">Service</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+                  <div class="dropdown-menu">
+                      <ul>
+                          <li><a href="404.html">404 Page</a></li>
+                          <li><a href="gallery.html">Gallery</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
+                  <div id="user_nav" class="dropdown-menu">
+                      <ul>
+                          <li><a href="blog-fullwidth.html">Blog Full</a></li>
+                          <li><a href="blog-left-sidebar.html">Blog Left sidebar</a></li>
+                          <li><a href="blog-right-sidebar.html">Blog Right sidebar</a></li>
+
+                            <% if user_signed_in? %>
+                                Signed in as <%= current_user.email %>.
+                                <%= link_to 'Sign out', destroy_user_session_path %>
+                            <% else %>
+                                <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+                            <% end %>
+                        </div>
+                      </ul>
+                  </div>
+              </li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+      </div>
+  </nav>
+  <!-- /main nav -->
+  </div>
+  </header>
+
+  <%= yield %>
+
+  <!--
+  ==================================================
+  Footer Section Start
+  ================================================== -->
+  <footer id="footer">
+  <div class="container">
+      <div class="col-md-8">
+          <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a href="http://www.Themefisher.com">Themefisher</a></p>
+      </div>
+      <div class="col-md-4">
+          <!-- Social Media -->
+          <ul class="social">
+              <li>
+                  <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                      <i class="ion-social-facebook"></i>
+                  </a>
+              </li>
+              <li>
+                  <a href="http://wwww.twitter.com/themefisher" class="Twitter">
+                      <i class="ion-social-twitter"></i>
+                  </a>
+              </li>
+              <li>
+                  <a href="#" class="Linkedin">
+                      <i class="ion-social-linkedin"></i>
+                  </a>
+              </li>
+              <li>
+                  <a href="http://wwww.fb.com/themefisher" class="Google Plus">
+                      <i class="ion-social-googleplus"></i>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </div>
+  </footer> <!-- /#footer -->
 
 </body>
 </html>

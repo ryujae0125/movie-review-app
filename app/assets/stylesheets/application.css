@@ -10,14 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
- *= css/bootstrap.min
- *= css/ionicons.min.css
- *= css/animate.css
- *= css/slider.css
- *= css/owl.carousel.css
- *= css/owl.theme.css
- *= css/jquery.fancybox.css
+ *= require css/bootstrap.min
+ *= require css/ionicons.min
+ *= require css/animate
+ *= require css/slider
+ *= require css/owl.carousel
+ *= require css/owl.theme
+ *= require css/jquery.fancybox
  *= require css/main
+ *= require css/responsive
+ *= require_self
+ *= require_tree .
  */

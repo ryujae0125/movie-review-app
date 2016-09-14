@@ -13,7 +13,13 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require js/vendor/modernizr-2.6.2.min
+//= require js/jquery.min
+//= require js/owl.carousel.min
+//= require js/bootstrap.min
+//= require js/wow.min
+//= require js/slider
+//= require js/jquery.fancybox
+//= require js/main
 //= require turbolinks
 //= require_tree .
-
-//= require js/main
