@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
 
   get '/users/' => 'users#index'
+
+  post '/favorite_movies' => 'favorite_movies#create'
+  get '/favorite_movies' => 'favorite_movies#index'
 end

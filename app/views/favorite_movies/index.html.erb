@@ -1,0 +1,14 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1> Hi <h2>
+  <% @favorite_movies.each do |favorite_movie| %>
+  <div>
+    <%= favorite_movie.movie.name%>
+    <%= favorite_movie.favorite %>
+    <%= favorite_movie.favorited_at %>
+  </div>
+  <% end %>
