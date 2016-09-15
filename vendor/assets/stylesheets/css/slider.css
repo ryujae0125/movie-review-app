@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -26,11 +26,11 @@ Primary style
 .no-js .cd-words-wrapper b.is-visible {
   opacity: 1;
 }
+/* --------------------------------
 
+xslide
 
-xslide 
-
--------------------------------- */
+--------------------------------*/
 .cd-headline.slide span {
   display: inline-block;
   padding: .2em 0;
@@ -165,5 +165,4 @@ xslide
     transform: translateY(100%);
   }
 }
-/* -------------------------------- 
-
+/* --------------------------------
