@@ -1,5 +1,5 @@
-class FavoriteMoviesController < ApplicationController
-  before_action :authenticate_user!
+class Api::V1::FavoriteMoviesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     @favorite_movies = current_user.favorite_movies

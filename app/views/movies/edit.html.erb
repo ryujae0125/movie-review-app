@@ -1,1 +1,8 @@
-<h1> </h1>
+<h1> Edit a Movie </h1>
+
+<%= form_tag "/movies/#{@movie.id}", method: :patch do %>
+  <div>
+    <%= render 'form' %>
+  </div>
+  <%= submit_tag "Edit a movie", class: 'btn btn-primary' %>
+<% end %>

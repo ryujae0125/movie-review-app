@@ -1,19 +1,34 @@
 <div>
-  <%= label_tag :name %>
-  <%= text_field_tag :name, @movie.name %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title, @movie.title, size: 75 %>
 </div>
 
 <div>
   <%= label_tag :genre %>
-  <%= text_field_tag :genre, @movie.genre %>
+  <%= text_field_tag :genre, @movie.genre, size: 75 %>
 </div>
 
 <div>
   <%= label_tag :date %>
-  <%= text_field_tag :date, @movie.date %>
+  <%= text_field_tag :date, @movie.date, size: 75 %>
 </div>
 
 <div>
   <%= label_tag :director %>
-  <%= text_field_tag :director, @movie.director %>
+  <%= text_field_tag :director, @movie.director, size: 75 %>
+</div>
+
+<div>
+  <%= label_tag :actors %>
+  <%= text_field_tag :actors, @movie.actors, size: 75 %>
+</div>
+
+<div>
+  <%= label_tag :poster %>
+  <%= text_field_tag :poster, @movie.poster, size: 75 %>
+</div>
+
+<div>
+  <%= label_tag :language %>
+  <%= text_field_tag :language, @movie.language, size: 75 %>
 </div>

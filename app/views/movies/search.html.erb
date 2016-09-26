@@ -1,0 +1,27 @@
+<body>
+<!-- Search Results Start -->
+<h1> Search Results</h1>
+  <div class="container">
+    <div class="row">
+      <% @movies.each do |movie| %>
+        <div class="col-sm-5">
+          <div class="movie_single">
+            <ul>
+              <h2 class="movie_header"><a href="/movies/<%= movie.id %>"><%= movie.title %></h2>
+              <li> Genre: <%= movie.genre %> </li>
+              <li>Date: <%= movie.date %></li>
+              <li>Director: <%= movie.director %></li>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+<!-- Search Results End -->
+
+<!-- Comparison Start -->
+
+
+<!-- Comparison End -->
+</body>

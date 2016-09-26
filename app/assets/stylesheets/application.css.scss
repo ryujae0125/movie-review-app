@@ -20,5 +20,10 @@
  *= require css/main
  *= require css/responsive
  *= require_self
+ *= require font-awesome
  *= require_tree .
  */
+
+ body {
+     padding-top: 80px;
+ }

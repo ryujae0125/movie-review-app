@@ -1,0 +1,26 @@
+<h1> Your Reviews </h1>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <div class="col-sm-5">
+          <div class="review_single">
+            <ul>
+              <h2 class="review_header"><a href="/movies/<%= review.movie_id %>"><%= review.movie.title %></h2>
+              <li> User ID: <%= review.user_id %></li>
+              <li> User name: <%= review.user.email %> </li>
+              <li> Movie ID: <%= review.movie_id %> </li>
+              <li> Rating <%= review.rating %></li>
+              <li> Review: <%= review.review %></li>
+              <%= link_to "Edit", "/reviews/#{review.id}/edit", class: "btn btn-success" %>
+              <%= link_to "Delete", "/reviews/#{review.id}", {method: :delete, class: "btn btn-danger" }%>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+</body>

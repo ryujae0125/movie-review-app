@@ -1,14 +1,21 @@
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<h1> Hi <h2>
-  <% @favorite_movies.each do |favorite_movie| %>
-  <div>
-    <%= favorite_movie.movie.name%>
-    <%= favorite_movie.favorite %>
-    <%= favorite_movie.favorited_at %>
-  </div>
-  <% end %>
+
+<h1> You Favorites <h2>
+
+  <div class="container">
+    <div class="row">
+      <% @favorite_movies.each do |favorite_movie| %>
+        <div class="col-sm-5">
+          <div class="movie_single">
+            <ul>
+              <h2 class="movie_header"><a href="/movies/">Favorite1</h2>
+              <li> Name: <%= favorite_movie.movie.title%></li>
+              <li>
+              <li>Favorited at: <%= favorite_movie.favorited_at %></li>
+            </ul>
+            <br>
+          </div>
+        </div>
+      <% end %>
+      </div>
+   </div>

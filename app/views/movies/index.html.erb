@@ -1,17 +1,75 @@
-<h1> Welcome </h1>
-<div class="container">
-<div class="row">
-  <% @movies.each do |movie| %>
-    <div class="col-sm-5">
-      <div class="movie_single">
-        <h2 class="movie_header"><a href="/movies/<%= movie.id %>"><%= movie.name %></h2>
-        <p>Genre: <%= movie.genre %></p>
-        <p>Date: <%= movie.date %></p>
-        <p>Director: <%= movie.director %></p>
-        <p>Favorite: <%= movie.favorite %></p>
-        <br>
-      </div>
+<br>
+<br>
+<br>
+<br>
+
+<body>
+  <div ng-app="app">
+    {{ 1 + 1 }}
+  </div>
+  <!-- Search Bar Start -->
+  <div class="col-xs-12 col-xs-offset-1">
+    <div class="input-group">
+      <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search for Movies", class: 'form-control' %>
+      <span class="input-group-btn">
+          <%= submit_tag "Search", class: "btn btn-default" %>
+      </span>
     </div>
   </div>
-  <% end %>
-</div>
+
+<% end %>
+    <!-- Search Bar End -->
+
+
+
+
+<% if current_user %>
+  <h1><a href="/favorite_movies">Favorites</a></h1>
+  <div class="container">
+    <div class="row">
+      <% @favorite_movies.each do |favorite_movie| %>
+      <div class="col-sm-5">
+        <div class="movie_single">
+          <ul>
+            <li><img src="<%= favorite_movie.movie.poster %>" alt="<%= favorite_movie.movie.title %>" class="img-responsive product_single_image"> </li>
+            <li> Title : <%= favorite_movie.movie.title %> </li>
+            <li> Director : <%= favorite_movie.movie.director %> </li>
+            <li> Genre : <%= favorite_movie.movie.genre %> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+
+
+<% end %>
+
+<h1> Top Rated </h1>
+
+
+    <div class="container">
+      <div class="row">
+        <% @movies.each do |movie| %>
+          <div class="col-sm-5">
+            <div class="movie_single">
+              <ul>
+                <h2 class="movie_header"><a href="/movies/<%= movie.id %>"><%= movie.title %></h2>
+                <li> Genre: <%= movie.genre %> </li>
+                <li>Date: <%= movie.date %></li>
+                <li>Director: <%= movie.director %></li>
+                <li>Actors: <%= movie.actors %></li>
+                <li>Language: <%= movie.language %></li>
+                <img src="<%= movie.poster %>" alt="<%= movie.title %>" class="img-responsive product_single_image">
+              </ul>
+              <br>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+
+
+  </body>

@@ -1,4 +1,5 @@
-class ReviewsController < ApplicationController
+class Api::V1::ReviewsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 require 'pry'
   def index
     @reviews = Review.all
@@ -19,7 +20,7 @@ require 'pry'
     if review
       review.update(
         rating: params[:rating],
-        review: params[:review]
+        review: params[:text]
       )
     else
       Review.create(
@@ -29,7 +30,9 @@ require 'pry'
         review: params[:review]
       )
     end
-    redirect_to reviews_path
+    @reviews = Review.all
+    @review = Review.find(params[:review_id])
+    render 'show'
   end
 
   def show
@@ -52,7 +55,6 @@ require 'pry'
   def destroy
     @review = Review.find_by(id: params[:id])
     @review.destroy
-    redirect_to reviews_path
   end
 
   def search

@@ -1,0 +1,17 @@
+<div>
+  <%= hidden_field_tag(:user_id, current_user.id) %>
+</div>
+
+<div>
+  <%= hidden_field_tag(:movie_id, @movie.id) %>
+</div>
+
+<div>
+  <%= label_tag :rating %>
+  <%= number_field_tag(:rating, nil, in: 1..5) %>
+</div>
+
+<div>
+  <%= label_tag :review %>
+  <%= text_area_tag(:review, nil, rows: 5, cols: 100) %>
+</div>

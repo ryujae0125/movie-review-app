@@ -1,19 +1,41 @@
+<body>
+  <section>
+    <div class="row" style="margin-top: 10%;">
+      <div class="col-sm-3 col-sm-offset-2">
+        <div class="movie_single">
+            <h3><%= @movie.title %></h3>
+            <p>Genre: <%= @movie.genre %></p>
 
-
-<section>
-  <div class="row" style="margin-top: 10%;">
-    <div class="col-sm-3 col-sm-offset-2">
-      <div class="movie_single">
-          <h3><%= @movie.name %></h3>
-          <p>Genre: <%= @movie.genre %></p>
-
-          <p>Date Created: <%= @movie.date %></p>
-          <p>Director: <%= @movie.director %></p>
-          <%= link_to "Favorite", "/favorite_movies?movie_id=#{@movie.id}", {method: :post, class: "btn btn-danger" }%>
-          <%= link_to "Edit", "/movies/#{@movie.id}/edit", class: "btn btn-success" %>
-          <%= link_to "Delete", "/movies/#{@movie.id}", {method: :delete, class: "btn btn-danger" }%>
-
+            <p>Date Created: <%= @movie.date %></p>
+            <p>Director: <%= @movie.director %></p>
+            <%= link_to "Favorite", "/favorite_movies?movie_id=#{@movie.id}", {method: :post, class: "btn btn-info" }%>
+            <%= link_to "Edit", "/movies/#{@movie.id}/edit", class: "btn btn-success" %>
+            <%= link_to "Delete", "/movies/#{@movie.id}", {method: :delete, class: "btn btn-danger" }%>
+            <%= link_to "Add Review", "/reviews/#{@movie.id}/new", class: "btn btn-primary" %>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section>
+    <div>
+      <table style="width:100%">
+      <caption>Compare</caption>
+      <tr>
+        <th> My Database</th>
+      </tr>
+      <% @movie.reviews.each do |review| %>
+      <tr>
+        <td> <%= review.review %> </td>
+      </tr>
+      <% end %>
+
+
+
+    </div>
+  </section>
+
+
+
+
+</body>

@@ -1,0 +1,38 @@
+<h1> Your Reviews </h1>
+
+<div ng-controller="ratingsCtrl" ng-init="setup()" class="row">
+  <div ng-repeat="review in reviews" class="col-md-6 review-well">
+    <div class="col-md-12 well">
+      <h3> Movie Name: {{ review.title }}</h2>
+      <h4>Rating: {{ review.rating }}</h3>
+      <h5>Review: {{ review.review}}</h5>
+      <h5>
+      <i class="star-rating fa fa-lg" ng-repeat="star in review.stars" ng-click="favoriteReview(review, star)" ng-mouseover="fillStar(review, star)" ng-mouseleave="emptyStar(review, star)" ng-class="{'fa-star': star.filled, 'fa-star-o': !star.filled}" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+
+<body>
+  <div class="container">
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <div class="col-sm-5">
+          <div class="review_single">
+            <ul>
+              <h2 class="review_header"><a href="/movies/<%= review.movie_id %>"><%= review.movie.title %></h2>
+              <li> User ID: <%= review.user_id %></li>
+              <li> Movie ID: <%= review.movie_id %> </li>
+              <li> Rating <%= review.rating %></li>
+              <li> Review: <%= review.review %></li>
+              <%= link_to "Edit", "/reviews/#{review.id}/edit", class: "btn btn-success" %>
+              <%= link_to "Delete", "/reviews/#{review.id}", {method: :delete, class: "btn btn-danger" }%>
+            </ul>
+            <br>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+</body>

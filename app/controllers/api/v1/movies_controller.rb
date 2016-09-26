@@ -1,4 +1,4 @@
-class MoviesController < ApplicationController
+class Api::V1::MoviesController < ApplicationController
   before_action :authenticate_user!
   def index
     @movies = Movie.all

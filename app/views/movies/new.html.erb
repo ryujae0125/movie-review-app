@@ -1,4 +1,6 @@
 <%= form_tag '/movies', method: :post do %>
-  <%= render 'form' %>
+  <div>
+    <%= render 'form' %>
+  </div>
   <%= submit_tag "Add a movie", class: 'btn btn-primary' %>
 <% end %>
