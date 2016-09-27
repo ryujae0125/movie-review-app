@@ -1,16 +1,25 @@
-<h1> You Favorites <h2>
-
+<div class="section-heading">
+    <h1 class="title wow fadeInDown" data-wow-delay=".3s">Your Favorites</h1>
+    <p class="wow fadeInDown" data-wow-delay=".5s">
+</div>
   <div class="container customContainer">
     <div class="row">
       <div ng-controller="favoriteCtrl" ng-init="setup()" class="row">
-        <div ng-repeat="favorite_movie in favorite_movies">
+        <datalist id="title">
+          <option ng-repeat="favorite_movie in favorite_movies">{{ favorite_movie.title }}</option>
+        </datalist>
+        <input type="text" ng-model="filterTitle" list="title">
+        <button type="button" name="button" ng-click="toggleOrder('title')"> Order by Title </button>
+        <button type="button" name="button" ng-click="toggleOrder('date')"> Order by Date </button>
+        <div ng-repeat="favorite_movie in favorite_movies | filter: {title: filterTitle} | orderBy:orderAttribute:isReverse">
           <div class="col-sm-3 col-xs-12">
             <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+              <br>
                 <div class="img-wrapper">
                   <img ng-src="{{ favorite_movie.poster }}" class="img-responsive favorite" alt="this is a title" >
                    <div class="overlay">
                       <div class="buttons">
-                          <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Details</a>
+                          <a rel="gallery" class="fancybox" href="/movies/{{favorite_movie.movie_id}}">Details</a>
                           <a target="_blank" ng-click="favorite(favorite_movie)" ng-class="{'fa-heart': favorite_movie.favorite, 'fa-heart-o': !favorite_movie.favorite}" class="fa fa-lg pull-right heart" aria-hidden="true"></a>
                       </div>
                   </div>

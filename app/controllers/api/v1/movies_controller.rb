@@ -2,7 +2,8 @@ class Api::V1::MoviesController < ApplicationController
   before_action :authenticate_user!
   def index
     @movies = Movie.all
-    @favorite_movies = current_user.favorite_movies
+    @favorite_movies = current_user.favorite_movies.order("favorited_at DESC").first(4)
+    @tmovies = Tmdb::Discover.movie
   end
 
   def show

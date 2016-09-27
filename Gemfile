@@ -27,6 +27,8 @@ gem 'devise'
 gem 'rails_12factor', group: :production
 gem 'carrierwave'
 gem "font-awesome-rails"
+gem 'unirest'
+gem 'themoviedb-api'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

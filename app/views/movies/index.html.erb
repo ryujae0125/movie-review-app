@@ -40,7 +40,7 @@
                     <img src="<%= favorite_movie.movie.poster %>" class="img-responsive" alt="this is a title" >
                     <div class="overlay">
                         <div class="buttons">
-                            <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Details</a>
+                            <a rel="gallery" class="fancybox" href="/movies/<%= favorite_movie.movie_id %>">Details</a>
                             <%= link_to "Favorite", "/favorite_movies?movie_id=#{favorite_movie.movie_id}", {method: :post} %></%>
                         </div>
                     </div>
@@ -61,30 +61,103 @@
 <% end %>
 <!-- Favorite Movie End -->
 
+<!-- Popular movies Start -->
+<div class="section-heading">
+    <h1 class="title wow fadeInDown" data-wow-delay=".3s">Popular Movies </h1>
+    <p class="wow fadeInDown" data-wow-delay=".5s">
+</div>
 
-<h1> Top Rated </h1>
-
-
-    <div class="container">
-      <div class="row">
-        <% @movies.each do |movie| %>
-          <div class="col-sm-5">
-            <div class="movie_single">
-              <ul>
-                <h2 class="movie_header"><a href="/movies/<%= movie.id %>"><%= movie.title %></h2>
-                <li> Genre: <%= movie.genre %> </li>
-                <li>Date: <%= movie.date %></li>
-                <li>Director: <%= movie.director %></li>
-                <li>Actors: <%= movie.actors %></li>
-                <li>Language: <%= movie.language %></li>
-                <img src="<%= movie.poster %>" alt="<%= movie.title %>" class="img-responsive product_single_image">
-              </ul>
-              <br>
-            </div>
-          </div>
+<div class="container">
+    <div class="row">
+      <% @pmovies.each do |pmovie| %>
+        <div class="col-sm-3 col-xs-12" height: "100px">
+            <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                <div class="img-wrapper">
+                    <img src=" http://image.tmdb.org/t/p/w185<%= pmovie.poster_path %>" class="img-responsive" alt="this is a title" >
+                    <div class="overlay">
+                        <div class="buttons">
+                            <a rel="gallery" class="fancybox" href="/movies/>">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <figcaption>
+                  <h4>
+                    <a> <%= pmovie.title %> </a>
+                  </h4>
+                  <h5> Release_Date: <%= pmovie.release_date %> </h5>
+                  <h5> Popularity: <%= pmovie.popularity.truncate %> </h5>
+                </figcaption>
+            </figure>
         </div>
-        <% end %>
+      <% end %>
     </div>
+  </div>
+<!-- Popular movies End -->
 
+<!-- Now Playing movies Start -->
+  <div class="section-heading">
+      <h1 class="title wow fadeInDown" data-wow-delay=".3s">Now Playing </h1>
+      <p class="wow fadeInDown" data-wow-delay=".5s">
+  </div>
 
+  <div class="container">
+      <div class="row">
+        <% @lmovies.each do |lmovie| %>
+          <div class="col-sm-3 col-xs-12" height: "100px">
+              <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                  <div class="img-wrapper">
+                      <img src=" http://image.tmdb.org/t/p/w185<%= lmovie.poster_path %>" class="img-responsive" alt="this is a title" >
+                      <div class="overlay">
+                          <div class="buttons">
+                              <a rel="gallery" class="fancybox" href="/movies/>">Details</a>
+                          </div>
+                      </div>
+                  </div>
+                  <figcaption>
+                    <h4>
+                      <a> <%= lmovie.title %> </a>
+                    </h4>
+                    <h5> Release_Date: <%= lmovie.release_date %> </h5>
+                    <h5> Rating: <%= lmovie.vote_average %> </h5>
+                  </figcaption>
+              </figure>
+          </div>
+        <% end %>
+      </div>
+    </div>
+<!-- Now Playing movies End -->
+
+<!-- Top Rated movies Start -->
+
+  <div class="section-heading">
+    <h1 class="title wow fadeInDown" data-wow-delay=".3s"> Top Rated Movies </h1>
+    <p class="wow fadeInDown" data-wow-delay=".5s">
+  </div>
+
+  <div class="container">
+      <div class="row">
+        <% @tmovies.each do |tmovie| %>
+          <div class="col-sm-3 col-xs-12" height: "100px">
+              <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                  <div class="img-wrapper">
+                      <img src=" http://image.tmdb.org/t/p/w185<%= tmovie.poster_path %>" class="img-responsive" alt="this is a title" >
+                      <div class="overlay">
+                          <div class="buttons">
+                              <a rel="gallery" class="fancybox" href="/movies/>">Details</a>
+                          </div>
+                      </div>
+                  </div>
+                  <figcaption>
+                    <h4>
+                      <a> <%= tmovie.title %> </a>
+                    </h4>
+                    <h5> Release_Date: <%= tmovie.release_date %> </h5>
+                    <h5> Rating: <%= tmovie.vote_average %> </h5>
+                  </figcaption>
+              </figure>
+          </div>
+        <% end %>
+      </div>
+    </div>
+<!-- Top Rated movies end -->
   </body>

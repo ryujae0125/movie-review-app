@@ -42,8 +42,25 @@
           s.filled = true;
         }
       });
-
     };
+
+    $scope.addReview = function(review) {
+      var reviewParams = {
+        review_id: review.id,
+        review: review.review,
+        movie_id: review.movie_id
+      };
+
+      $http.post("/api/v1/reviews/"+review.id+"/review.json", reviewParams).success(function(response) {
+        $scope.reviews.push(review);
+        $scope.review = {};
+      }
+    );
+   };
+
+  //  $scope.delReview = function(review) {
+  //
+  //  }
 
 
   });

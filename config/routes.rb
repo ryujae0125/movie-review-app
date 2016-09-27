@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get '/reviews/user_reviews' => 'reviews#user_reviews'
       get '/reviews/:id/new' => 'reviews#new'
       post '/reviews/:id' => 'reviews#create'
+      post '/reviews/:id/review' => 'reviews#create_review'
       get '/reviews/:id/edit' => 'reviews#edit'
       get '/reviews/:id' => 'reviews#show'
       patch '/reviews/:id' => 'reviews#update'

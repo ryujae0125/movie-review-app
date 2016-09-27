@@ -11,6 +11,15 @@
       });
     };
 
+    $scope.toggleOrder = function(orderAttribute) {
+      if (orderAttribute != $scope.orderAttribute) {
+        $scope.isReverse = false;
+      } else {
+        $scope.isReverse = !$scope.isReverse;
+      }
+      $scope.orderAttribute = 'orderAttribute';
+    };
+
     $scope.favorite = function(favorite_movie) {
       favorite_movie.favorite = favorite_movie.favorite ? 0 : 1;
       var favoritemovieParams = {

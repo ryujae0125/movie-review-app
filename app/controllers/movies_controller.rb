@@ -1,8 +1,17 @@
 class MoviesController < ApplicationController
+  require 'unirest'
   before_action :authenticate_user!
+
   def index
     @movies = Movie.all
-    @favorite_movies = current_user.favorite_movies
+    @favorite_movies = current_user.favorite_movies.order("favorited_at DESC").first(4)
+    popular_movies = Tmdb::Movie.popular.results
+    top_movies = Tmdb::Movie.top_rated.results
+    latest_movies = Tmdb::Movie.now_playing.results
+    @pmovies = popular_movies.first(4)
+    @tmovies = top_movies.first(4)
+    @lmovies = latest_movies.first(4)
+
   end
 
   def show
@@ -52,7 +61,7 @@ class MoviesController < ApplicationController
   end
 
   def search
-    @movies = Movie.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
+    @movies = Movie.where("LOWER(title) LIKE ?", "%#{params[:search].downcase}%")
     render "search.html.erb"
   end
 

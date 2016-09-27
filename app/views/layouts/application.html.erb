@@ -22,55 +22,43 @@
 
               <!-- logo -->
               <div class="navbar-brand">
-                  <a href="/" >
-                      <%= image_tag 'logo.png' %>
+                  <a href="/">
+                      <%= image_tag 'All_in_one_logo.jpg', class: "img_logo" %>
                   </a>
               </div>
               <!-- /logo -->
           </div>
 
-  <nav class="collapse navbar-collapse navbar-right" role="navigation">
-      <div class="main-menu">
-          <ul class="nav navbar-nav navbar-right">
-              <li>
-                  <a href="/" >Home</a>
-              </li>
-              <% if current_user %>
-                <li><a href="/favorite_movies">Favorites</a></li>
-              <% end %>
-              <% if current_user %>
-                <li><a href="/reviews/user_reviews">Reviews</a></li>
-              <% end %>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
-                  <div class="dropdown-menu">
-                      <ul>
-                          <li><a href="404.html">404 Page</a></li>
-                          <li><a href="gallery.html">Gallery</a></li>
-                      </ul>
-                  </div>
-              </li>
-              <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
-                  <div id="user_nav" class="dropdown-menu">
-                      <ul>
-                          <li><a href="blog-fullwidth.html">Blog Full</a></li>
-                          <li><a href="blog-left-sidebar.html">Blog Left sidebar</a></li>
-
-                          <% if current_user %>
-                            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
-                          <% else %>
-                            <li><%= link_to "Log In", new_user_session_path %></li>
-                            <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                          <% end %>
+        <nav class="collapse navbar-collapse navbar-right" role="navigation">
+            <div class="main-menu">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/" >Home</a>
+                    </li>
+                    <% if current_user %>
+                      <li><a href="/favorite_movies">Favorites</a></li>
+                    <% end %>
+                    <% if current_user %>
+                      <li><a href="/reviews/user_reviews">Reviews</a></li>
+                    <% end %>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <span class="caret"></span></a>
+                        <div id="user_nav" class="dropdown-menu">
+                            <ul>
+                                <% if current_user %>
+                                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                                  <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+                                <% else %>
+                                  <li><%= link_to "Log In", new_user_session_path %></li>
+                                  <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                                <% end %>
+                              </div>
+                            </ul>
                         </div>
-                      </ul>
-                  </div>
-              </li>
-          </ul>
-      </div>
-  </nav>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
   <!-- /main nav -->
   </div>
