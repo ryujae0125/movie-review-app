@@ -9,4 +9,5 @@ json.array! @favorite_movies.each do |favorite_movie|
   json.director favorite_movie.movie.director
   json.actors favorite_movie.movie.actors
   json.language favorite_movie.movie.language
+  json.poster favorite_movie.movie.poster
 end

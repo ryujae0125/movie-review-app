@@ -66,8 +66,10 @@ a:hover {
 .moduler {
   padding: 140px 0;
 }
+
 .navbar-default .navbar-nav > li > a:hover {
   color: #02bdd5;
+
 }
 .navbar.navbar-default {
   border: 0;
@@ -358,10 +360,10 @@ figure .overlay:hover a {
 figure .buttons {
   position: absolute;
   top: 45%;
-  left: 24%;
+  left: 12%;
 }
 figure figcaption {
-  padding: 20px 25px;
+  padding: 20px 15px;
   margin-top: 0;
   color: #666;
 }

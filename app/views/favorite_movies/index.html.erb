@@ -1,46 +1,33 @@
 <h1> You Favorites <h2>
 
-
-  <div class="container">
-      <div class="row">
-        <% @favorite_movies.each do |favorite_movie| %>
-          <div class="col-sm-3 col-xs-12" height: "100px">
-              <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
-                  <div class="img-wrapper">
-                      <img src="<%= favorite_movie.movie.poster %>" class="img-responsive" alt="this is a title" >
-                      <div class="overlay">
-                          <div class="buttons">
-                              <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Details</a>
-                              <%= link_to "Favorite", "/favorite_movies?movie_id=#{favorite_movie.movie_id}", {method: :post} %></%>
-                          </div>
+  <div class="container customContainer">
+    <div class="row">
+      <div ng-controller="favoriteCtrl" ng-init="setup()" class="row">
+        <div ng-repeat="favorite_movie in favorite_movies">
+          <div class="col-sm-3 col-xs-12">
+            <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                <div class="img-wrapper">
+                  <img ng-src="{{ favorite_movie.poster }}" class="img-responsive favorite" alt="this is a title" >
+                   <div class="overlay">
+                      <div class="buttons">
+                          <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Details</a>
+                          <a target="_blank" ng-click="favorite(favorite_movie)" ng-class="{'fa-heart': favorite_movie.favorite, 'fa-heart-o': !favorite_movie.favorite}" class="fa fa-lg pull-right heart" aria-hidden="true"></a>
                       </div>
                   </div>
-                  <figcaption>
-                    <h4> Title : <%= favorite_movie.movie.title %> </h4>
-                    <h5> Director : <%= favorite_movie.movie.director %> </h5>
-                    <h5> Genre : <%= favorite_movie.movie.genre %> </h5>
-                  </figcaption>
-              </figure>
+              </div>
+              <figcaption>
+                <h4>
+                  <a>{{ favorite_movie.title }} </a>
+                </h4>
+                <div ng-if="favorite_movie.favoriteMessage" class="alert alert-success favorite-alert" role="alert">{{favorite_movie.favoriteMessage}}</div>
+                <h5>By: {{ favorite_movie.director }}</h5>
+                <h5>Genre: {{ favorite_movie.genre }}</h5>
+            </figcaption>
+            </figure>
           </div>
-        <% end %>
+
       </div>
     </div>
-
-    <div class="container">
-        <div class="row">
-          <div ng-controller="favoriteCtrl" ng-init="setup()" class="row">
-            <div ng-repeat="favorite_movie in favorite_movies" class="col-md-6 framework-well">
-              <div class="col-md-12 well">
-                <h3> {{ favorite_movie.title }} </h3>
-                <div ng-if="favorite_movie.favoriteMessage" class="alert alert-success favorite-alert" role="alert">{{favorite_movie.favoriteMessage}}</div>
-                <h5>Director: {{ favorite_movie.director }}</h5>
-                <h6>Genre: {{ favorite_movie.genre }}</h6>
-                <i ng-click="favorite(favorite_movie)" ng-class="{'fa-heart': favorite_movie.favorite, 'fa-heart-o': !favorite_movie.favorite}" class="fa fa-lg pull-right heart" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-     </div>  
 <!--
   <div class="container">
     <div class="row">
