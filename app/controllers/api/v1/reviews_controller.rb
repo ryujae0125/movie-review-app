@@ -19,8 +19,26 @@ require 'pry'
     review = Review.find_by(user_id: current_user.id, movie_id: params[:movie_id])
     if review
       review.update(
+        rating: params[:rating]
+      )
+    else
+      Review.create(
+        user_id: current_user.id,
+        movie_id: params[:movie_id],
+        rating: params[:rating]
+      )
+    end
+    @reviews = Review.all
+    @review = Review.find(params[:review_id])
+    render 'show'
+  end
+
+  def create_review
+    review = Review.find_by(user_id: current_user.id, movie_id: params[:movie_id])
+    if review
+      review.update(
         rating: params[:rating],
-        review: params[:text]
+        review: params[:review]
       )
     else
       Review.create(
@@ -33,23 +51,11 @@ require 'pry'
     @reviews = Review.all
     @review = Review.find(params[:review_id])
     render 'show'
+
   end
 
   def show
     @review = Review.find_by(id: params[:id])
-  end
-
-  def edit
-    @reviews = Review.find_by(id: params[:id])
-    @movie = Movie.find_by(id: @reviews.movie_id)
-  end
-
-  def update
-    @reviews = Review.find_by(id: params[:id])
-    @reviews = Review.update(
-      rating: params[:rating],
-      review: params[:reivew]
-    )
   end
 
   def destroy

@@ -6,13 +6,21 @@ class FavoriteMoviesController < ApplicationController
   end
 
   def create
-    favorite_movies = FavoriteMovie.new(
+    favorite_movie = FavoriteMovie.find_by(
       user_id: current_user.id,
       movie_id: params[:movie_id],
-      favorited_at: Time.now
     )
-    favorite_movies.save
-    redirect_to '/'
+    binding.pry
+    if favorite_movie
+      favorite_movie.destroy
+    else
+      favorite_movie = FavoriteMovie.create(
+        user_id: current_user.id,
+        movie_id: params[:movie_id],
+        favorited_at: Time.now
+      )
+    end
+    redirect_to '/movies'
   end
 
   def destroy

@@ -42,11 +42,12 @@ require 'pry'
   end
 
   def update
-    @reviews = Review.find_by(id: params[:id])
-    @reviews = Review.update(
+    review = Review.find_by(id: params[:id])
+    review.update(
       rating: params[:rating],
       review: params[:reivew]
     )
+    redirect_to '/'
   end
 
   def destroy

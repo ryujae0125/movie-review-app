@@ -6,19 +6,21 @@ class Api::V1::FavoriteMoviesController < ApplicationController
   end
 
   def create
-    favorite_movies = FavoriteMovie.new(
-      user_id: current_user.id,
-      movie_id: params[:movie_id],
-      favorited_at: Time.now
-    )
-    favorite_movies.save
-    redirect_to '/'
-  end
-
-  def destroy
-    @favorite_movie = FavoriteMovie.find_by(id: params[:id])
-    @favorite_movie.destroy
-    render '/favorite_movies'
+    if params[:favorite] == 1
+      FavoriteMovie.create(
+        user_id: current_user.id,
+        movie_id: params[:movie_id],
+        favorited_at: Time.now
+      )
+    render json: {success: "Movie favorited!"}
+    else
+      favorite = FavoriteMovie.find_by(
+        user_id: current_user.id,
+        movie_id: params[:movie_id]
+      )
+      favorite.destroy
+    render json: {success: "Movie removed from favorites!"}
+    end
   end
 
 end
