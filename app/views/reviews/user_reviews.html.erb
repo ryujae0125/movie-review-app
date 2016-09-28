@@ -8,18 +8,15 @@
 
 <div ng-controller="ratingsCtrl" ng-init="setup()" class="row">
   <div>
-    <input type="text" ng-model="filterTitle" list="title"style="margin-left: 40px">
+    <input type="text" ng-model="filterTitle" list="title" placeholder="Search by Title" style="margin-left: 40px">
   </div>
   <br>
   <datalist id="title">
     <option ng-repeat="review in reviews">{{ review.title }}</option>
   </datalist>
 
-
-
-
-  <div ng-repeat="review in reviews | filter: {title: filterTitle} " class="col-md-5 review-well">
-    <div class="col-md-12 well">
+  <div ng-repeat="review in reviews | filter: {title: filterTitle} " class="col-md-6 review-well">
+    <div class="col-md-10 well">
       <h4>
         <a href="/movies/{{review.movie_id}}"> Title: {{ review.title }}</a>
       </h4>
@@ -41,8 +38,8 @@
 <br>
 <br>
   <div class="container">
-    <div class="row">
       <% @reviews.each do |review| %>
+      <div class="row">
         <div class="col-sm-5">
           <div class="review_single">
             <ul>

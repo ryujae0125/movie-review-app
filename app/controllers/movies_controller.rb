@@ -11,7 +11,6 @@ class MoviesController < ApplicationController
     @pmovies = popular_movies.first(4)
     @tmovies = top_movies.first(4)
     @lmovies = latest_movies.first(4)
-
   end
 
   def show
@@ -19,6 +18,8 @@ class MoviesController < ApplicationController
     @reviews = @movie.reviews
     @tmdb_movie = Tmdb::Search.movie("#{@movie.title}").results.first
     @treviews = Tmdb::Movie.reviews("#{@tmdb_movie.id}").results
+
+
 
   end
 
@@ -36,6 +37,7 @@ class MoviesController < ApplicationController
       poster: params[:poster],
       language: params[:language]
       )
+    redirect_to movies_new_path
   end
 
   def edit

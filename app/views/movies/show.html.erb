@@ -6,9 +6,9 @@
           <img src=" http://image.tmdb.org/t/p/w185<%= @tmdb_movie.poster_path %>">
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4" style="padding-bottom: 10px">
         <div class="movie_single">
-            <h3><%= @movie.title %></h3>
+            <h3 style="margin-top: 3px"><%= @movie.title %></h3>
             <p> Genre: <%= @movie.genre %></p>
             <p> Date Released: <%= @movie.date %></p>
             <p> Director: <%= @movie.director %></p>
@@ -25,29 +25,24 @@
 
     <div class="row" style="margin-top: 3%;">
       <div class="col-sm-6" style="padding-left: 40px;">
-        <% @treviews.each do |treview| %>
+        <h1> TMDB Database </h1>
+          <% @treviews.each do |treview| %>
         <ul>
           <li> <%= treview.content %> </li>
         </ul>
-        <% end %>
+          <% end %>
       </div>
 
 
       <div class="col-sm-6">
         <table style="width:100%">
-        <caption>Compare</caption>
-        <tr>
-          <th> My Database</th>
-        </tr>
-        <% @movie.reviews.each do |review| %>
-        <tr>
-          <td> <%= review.review %> </td>
-        </tr>
-        <tr>
-          <td> By: <%= review.user.email %> </td>
-        </tr>
-
-        <% end %>
+        <h1> All-in-One Database </h1>
+          <% @movie.reviews.each do |review| %>
+        <ul>
+          <li> By: <%= review.user.email %> </li>
+          <li> <%= review.review %> </li>
+        </ul>
+          <% end %>
       </div>
     </div>
 

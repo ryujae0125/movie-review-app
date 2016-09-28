@@ -29,7 +29,7 @@ require 'pry'
         review: params[:review]
       )
     end
-    redirect_to reviews_path
+    redirect_to reviews_user_reviews_path
   end
 
   def show

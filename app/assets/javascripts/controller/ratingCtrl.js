@@ -58,9 +58,21 @@
     );
    };
 
-  //  $scope.delReview = function(review) {
-  //
-  //  }
+   $scope.delReview = function(review) {
+     console.log(review);
+     var reviewParams = {
+       review_id: review.id,
+       review: review.review,
+       movie_id: review.movie_id
+     };
+     var index = $scope.reviews.indexOf(review);
+       $scope.reviews.splice(index, 1);
+       
+     $http.delete("/api/v1/reviews/"+review.id+".json", reviewParams).success(function(response) {
+       review.review = response.review;
+     }
+   );
+  };
 
 
   });

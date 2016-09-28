@@ -37,7 +37,7 @@ require 'pry'
 
   def create_review
     review = Review.find_by(user_id: current_user.id, movie_id: params[:movie_id])
-  
+
     if review
       review.update(
         review: params[:review]
@@ -62,6 +62,7 @@ require 'pry'
   def destroy
     @review = Review.find_by(id: params[:id])
     @review.destroy
+    render 'user_reviews'
   end
 
   def search

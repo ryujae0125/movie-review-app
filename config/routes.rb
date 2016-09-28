@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       get '/reviews/:id/edit' => 'reviews#edit'
       get '/reviews/:id' => 'reviews#show'
       patch '/reviews/:id' => 'reviews#update'
-      post '/reviews/destroy/:id' => 'reviews#destroy'
+      delete '/reviews/:id' => 'reviews#destroy'
 
       get '/users/' => 'users#index'
 

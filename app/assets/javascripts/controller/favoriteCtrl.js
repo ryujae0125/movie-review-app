@@ -14,11 +14,10 @@
     $scope.toggleOrder = function(orderAttribute) {
       if (orderAttribute != $scope.orderAttribute) {
         $scope.isReverse = false;
-        console.log($scope.orderAttribute);
       } else {
         $scope.isReverse = !$scope.isReverse;
       }
-      $scope.orderAttribute = 'orderAttribute';
+      $scope.orderAttribute = orderAttribute;
     };
 
     $scope.favorite = function(favorite_movie) {
