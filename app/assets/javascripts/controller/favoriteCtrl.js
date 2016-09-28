@@ -14,6 +14,7 @@
     $scope.toggleOrder = function(orderAttribute) {
       if (orderAttribute != $scope.orderAttribute) {
         $scope.isReverse = false;
+        console.log($scope.orderAttribute);
       } else {
         $scope.isReverse = !$scope.isReverse;
       }

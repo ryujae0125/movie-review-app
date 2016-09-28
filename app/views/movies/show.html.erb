@@ -1,13 +1,20 @@
 <body>
   <section>
     <div class="row" style="margin-top: 1%;">
-      <div class="col-sm-3 col-sm-offset-2">
+      <div class="col-sm-3" style="padding-left: 100px;">
+        <div class="movie_single">
+          <img src=" http://image.tmdb.org/t/p/w185<%= @tmdb_movie.poster_path %>">
+        </div>
+      </div>
+      <div class="col-sm-4">
         <div class="movie_single">
             <h3><%= @movie.title %></h3>
-            <p>Genre: <%= @movie.genre %></p>
-
-            <p>Date Created: <%= @movie.date %></p>
-            <p>Director: <%= @movie.director %></p>
+            <p> Genre: <%= @movie.genre %></p>
+            <p> Date Released: <%= @movie.date %></p>
+            <p> Director: <%= @movie.director %></p>
+            <p> Actors: <%= @movie.actors %></p>
+            <p> Language: <%= @movie.language %></p>
+            <p> Rating : <%= @movie.average_rating %></p>
             <%= link_to "Favorite", "/favorite_movies?movie_id=#{@movie.id}", {method: :post, class: "btn btn-info" }%>
             <%= link_to "Edit", "/movies/#{@movie.id}/edit", class: "btn btn-success" %>
             <%= link_to "Delete", "/movies/#{@movie.id}", {method: :delete, class: "btn btn-danger" }%>
@@ -16,21 +23,34 @@
       </div>
     </div>
 
-    <div class="row" style= "margin-left: 10%">
-      <table style="width:100%">
-      <caption>Compare</caption>
-      <tr>
-        <th> My Database</th>
-      </tr>
-      <% @movie.reviews.each do |review| %>
-      <tr>
-        <td> <%= review.review %> </td>
-      </tr>
-      <tr>
-        <td> By: <%= review.user.email %> </td>
-      </tr>
+    <div class="row" style="margin-top: 3%;">
+      <div class="col-sm-6" style="padding-left: 40px;">
+        <% @treviews.each do |treview| %>
+        <ul>
+          <li> <%= treview.content %> </li>
+        </ul>
+        <% end %>
+      </div>
 
-      <% end %>
+
+      <div class="col-sm-6">
+        <table style="width:100%">
+        <caption>Compare</caption>
+        <tr>
+          <th> My Database</th>
+        </tr>
+        <% @movie.reviews.each do |review| %>
+        <tr>
+          <td> <%= review.review %> </td>
+        </tr>
+        <tr>
+          <td> By: <%= review.user.email %> </td>
+        </tr>
+
+        <% end %>
+      </div>
+    </div>
+
   </section>
 
 </body>

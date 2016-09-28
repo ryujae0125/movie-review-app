@@ -10,7 +10,6 @@ class FavoriteMoviesController < ApplicationController
       user_id: current_user.id,
       movie_id: params[:movie_id],
     )
-    binding.pry
     if favorite_movie
       favorite_movie.destroy
     else

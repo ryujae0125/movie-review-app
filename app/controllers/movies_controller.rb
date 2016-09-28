@@ -17,6 +17,9 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find_by(id: params[:id])
     @reviews = @movie.reviews
+    @tmdb_movie = Tmdb::Search.movie("#{@movie.title}").results.first
+    @treviews = Tmdb::Movie.reviews("#{@tmdb_movie.id}").results
+
   end
 
   def new

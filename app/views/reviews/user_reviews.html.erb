@@ -1,14 +1,23 @@
-<div class="section-heading">
-    <h1 class="title wow fadeInDown" data-wow-delay=".3s">Your Reviews</h1>
-    <p class="wow fadeInDown" data-wow-delay=".5s">
-</div>
 
 <body>
+  <div class="section-heading">
+    <h1 class="title wow fadeInDown" data-wow-delay=".3s">Your Reviews</h1>
+    <p class="wow fadeInDown" data-wow-delay=".5s">
+  </div>
+
+
 <div ng-controller="ratingsCtrl" ng-init="setup()" class="row">
+  <div>
+    <input type="text" ng-model="filterTitle" list="title"style="margin-left: 40px">
+  </div>
+  <br>
   <datalist id="title">
     <option ng-repeat="review in reviews">{{ review.title }}</option>
   </datalist>
-  <input type="text" ng-model="filterTitle" list="title">
+
+
+
+
   <div ng-repeat="review in reviews | filter: {title: filterTitle} " class="col-md-5 review-well">
     <div class="col-md-12 well">
       <h4>
@@ -16,9 +25,11 @@
       </h4>
       <i class="star-rating fa fa-lg" ng-repeat="star in review.stars" ng-click="favoriteReview(review, star)" ng-mouseover="fillStar(review, star)" ng-mouseleave="emptyStar(review, star)" ng-class="{'fa-star': star.filled, 'fa-star-o': !star.filled}" aria-hidden="true"></i>
       <h5>Review: {{ review.review}}</h5>
-      <textarea name="review1" cols="50" rows="7" placeholder="Write you review" ng-model="movie.review"></textarea>
-      <button ng-click="addReview(review)">Add your review</button>
-      <button ng-click="delReview(review)">Delete your review</button>
+      <div>
+        <textarea name="review1" cols="50" rows="7" placeholder="Write you review" ng-model="review.review"></textarea>
+        <button ng-click="addReview(review)">Add your review</button>
+        <button ng-click="delReview(review)">Delete your review</button>
+     </div>
     </div>
   </div>
 </div>

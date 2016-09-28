@@ -8,17 +8,18 @@
         <datalist id="title">
           <option ng-repeat="favorite_movie in favorite_movies">{{ favorite_movie.title }}</option>
         </datalist>
-        <input type="text" ng-model="filterTitle" list="title">
+        <input type="text" ng-model="filterTitle" list="title" placeholder="Filter by Title" style="margin-left: 20px">
         <button type="button" name="button" ng-click="toggleOrder('title')"> Order by Title </button>
         <button type="button" name="button" ng-click="toggleOrder('date')"> Order by Date </button>
+        <br>
+        <br>
         <div ng-repeat="favorite_movie in favorite_movies | filter: {title: filterTitle} | orderBy:orderAttribute:isReverse">
           <div class="col-sm-3 col-xs-12">
             <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
-              <br>
                 <div class="img-wrapper">
-                  <img ng-src="{{ favorite_movie.poster }}" class="img-responsive favorite" alt="this is a title" >
+                  <img ng-src="{{ favorite_movie.poster }}" class="img-responsive" alt="this is a title" >
                    <div class="overlay">
-                      <div class="buttons">
+                      <div class="buttonsFavorite">
                           <a rel="gallery" class="fancybox" href="/movies/{{favorite_movie.movie_id}}">Details</a>
                           <a target="_blank" ng-click="favorite(favorite_movie)" ng-class="{'fa-heart': favorite_movie.favorite, 'fa-heart-o': !favorite_movie.favorite}" class="fa fa-lg pull-right heart" aria-hidden="true"></a>
                       </div>

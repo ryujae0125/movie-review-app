@@ -45,6 +45,7 @@
     };
 
     $scope.addReview = function(review) {
+      console.log(review);
       var reviewParams = {
         review_id: review.id,
         review: review.review,
@@ -52,8 +53,7 @@
       };
 
       $http.post("/api/v1/reviews/"+review.id+"/review.json", reviewParams).success(function(response) {
-        $scope.reviews.push(review);
-        $scope.review = {};
+        review.review = response.review;
       }
     );
    };

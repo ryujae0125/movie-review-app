@@ -1,7 +1,7 @@
 <body>
   <h1> Reviews for <%= @movie.title %></h1>
 
-    <%= form_tag "/reviews/#{<@movie></@movie>.id}", method: :post do %>
+    <%= form_tag "/reviews/#{@movie.id}", method: :post do %>
       <%= render 'form' %>
     <%= submit_tag "Add your review", class: 'btn btn-primary' %>
   <% end %>

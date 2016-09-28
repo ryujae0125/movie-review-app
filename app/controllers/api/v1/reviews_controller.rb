@@ -28,6 +28,8 @@ require 'pry'
         rating: params[:rating]
       )
     end
+    movie = Movie.find_by(id: params[:movie_id])
+    movie.update(average_rating: movie.calc_avg_rating)
     @reviews = Review.all
     @review = Review.find(params[:review_id])
     render 'show'
@@ -35,16 +37,15 @@ require 'pry'
 
   def create_review
     review = Review.find_by(user_id: current_user.id, movie_id: params[:movie_id])
+  
     if review
       review.update(
-        rating: params[:rating],
         review: params[:review]
       )
     else
       Review.create(
         user_id: current_user.id,
         movie_id: params[:movie_id],
-        rating: params[:rating],
         review: params[:review]
       )
     end
