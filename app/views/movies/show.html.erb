@@ -6,6 +6,7 @@
           <img src=" http://image.tmdb.org/t/p/w185<%= @tmdb_movie.poster_path %>">
         </div>
       </div>
+
       <div class="col-sm-4" style="padding-bottom: 10px">
         <div class="movie_single">
             <h3 style="margin-top: 3px"><%= @movie.title %></h3>
@@ -35,7 +36,6 @@
 
 
       <div class="col-sm-6">
-        <table style="width:100%">
         <h1> All-in-One Database </h1>
           <% @movie.reviews.each do |review| %>
         <ul>
